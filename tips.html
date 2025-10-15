@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate-key="tipsPageTitle">Поради та Лайфхаки</title>
+    <link rel="stylesheet" href="css\style.css">
+    <script>
+        (function() {
+            try {
+                var theme = localStorage.getItem('theme') || 'light';
+                document.documentElement.className = 'theme-' + theme;
+            } catch (e) {}
+        })();
+    </script>
+</head>
+<body>
+
+    <header class="page-header">
+        <a href="index.html" class="back-link" data-translate-key="backLink">← На головну</a>
+        <h1 data-translate-key="tipsHeader">Правові Поради для Студентів-Орендарів</h1>
+    </header>
+
+    <div class="container content-page">
+        <div class="tip-card">
+            <h3 data-translate-key="tip1Title">Договір – ваш головний захист</h3>
+            <p data-translate-key="tip1Text">Ніколи не орендуйте житло без письмового договору. У разі конфлікту – це єдиний документ, що має юридичну силу. Усі обіцянки власника фіксуйте письмово.</p>
+        </div>
+        <div class="tip-card">
+            <h3 data-translate-key="tip2Title">Завжди беріть розписки</h3>
+            <p data-translate-key="tip2Text">При передачі грошей (оренда, депозит, комунальні) завжди вимагайте розписку. У ній має бути вказано: дата, сума, за що сплачено, та підписи обох сторін.</p>
+        </div>
+        <div class="tip-card">
+            <h3 data-translate-key="tip3Title">Фотографуйте все</h3>
+            <p data-translate-key="tip3Text">Перед заселенням зробіть детальні фото та відео всіх недоліків квартири: подряпини на меблях, плями на стінах, несправна техніка. Це допоможе уникнути проблем при виселенні.</p>
+        </div>
+         <div class="tip-card">
+            <h3 data-translate-key="tip4Title">Акт прийому-передачі</h3>
+            <p data-translate-key="tip4Text">Разом з договором підпишіть акт прийому-передачі квартири. У ньому опишіть стан житла, перелік меблів та техніки, а також зафіксуйте показники лічильників.</p>
+        </div>
+    </div>
+
+    <script src="js\main.js"></script>
+</body>
+</html>

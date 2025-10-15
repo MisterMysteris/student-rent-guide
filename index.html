@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate-key="pageTitle">Roadmap Оренди Житла для Студента</title>
+    
+    <script>
+        // Цей скрипт блокує мерехтіння теми
+        (function() {
+            try {
+                var theme = localStorage.getItem('theme') || 'light';
+                document.documentElement.className = 'theme-' + theme;
+            } catch (e) {}
+        })();
+    </script>
+    
+    <link rel="stylesheet" href="css\style.css">
+</head>
+<body>
+
+    <div id="settings-panel" class="settings-panel">
+        <h3 data-translate-key="settingsTitle">Налаштування</h3>
+
+        <div class="setting-group">
+            <label data-translate-key="themeLabel">Колірна тема:</label>
+            <button id="light-theme-btn" data-translate-key="lightTheme">Світла</button>
+            <button id="dark-theme-btn" data-translate-key="darkTheme">Темна</button>
+            <button id="gray-theme-btn" data-translate-key="grayTheme">Сіра</button>
+        </div>
+
+        <div class="setting-group">
+            <label data-translate-key="langLabel">Мова:</label>
+            <button id="lang-uk-btn">Українська</button>
+            <button id="lang-en-btn">English</button>
+        </div>
+        
+        <div class="setting-group">
+            <label data-translate-key="fontLabel">Розмір шрифту:</label>
+            <button id="font-decrease-btn">-</button>
+            <span id="font-size-display">100%</span>
+            <button id="font-increase-btn">+</button>
+        </div>
+
+        <div class="setting-group">
+            <label for="speech-toggle" data-translate-key="speechLabel">Режим озвучки:</label>
+            <label class="switch">
+                <input type="checkbox" id="speech-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+        
+        <button id="close-settings-btn" class="close-btn" data-translate-key="closeBtn">Закрити</button>
+    </div>
+
+    <button id="open-settings-btn" class="open-settings-btn" title="Налаштування">⚙️</button>
+
+    <div class="main-menu">
+        <div class="main-navigation">
+            <a href="tips.html" class="nav-link top-link" data-translate-key="tipsLink">Правові поради для студентів</a>
+            
+            <a href="legal.html" class="nav-link left-link" data-translate-key="legalLink">Суб'єкти Оренди: Права та Обов'язки</a>
+            
+            <h1 class="main-title" data-translate-key="mainTitle">Як орендувати житло студенту?</h1>
+            
+            <a href="roadmap.html" class="nav-link right-link" data-translate-key="roadmapLink">Roadmap "Як орендувати житло?"</a>
+            
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeV8CMYBoib6RJLOXHy-hVBemlPWKF9X5A9Kz9QkBDAlPP4DQ/viewform?usp=dialog" target="_blank" class="nav-link bottom-link" data-translate-key="feedbackLink">Посилання для фідбеку</a>
+        </nav>
+    </div>
+
+    <script src="js\main.js"></script>
+</body>
+</html>

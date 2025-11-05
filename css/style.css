@@ -150,6 +150,52 @@ body.speech-mode-active .play-speech-btn {
 }
 .speaker-btn:hover { background-color: var(--primary-blue); color: white; }
 
+/* --- СТИЛЬ ДЛЯ КНОПКИ ПОЛІТИКИ --- */
+.open-policy-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    background: var(--primary-blue);
+    color: white;
+    padding: 15px 25px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+    font-size: inherit; 
+    box-sizing: border-box; 
+}
+
+.open-policy-btn:hover {
+    background: var(--primary-hover); 
+    transform: scale(1.05); 
+}
+
 /* --- Адаптивність --- */
 @media (max-width: 900px) { .left-link { left: 2%; } .right-link { right: 2%; } }
-@media (max-width: 768px) { .main-menu { padding-top: 10vh; } .top-link, .bottom-link, .left-link, .right-link { position: static; transform: none; display: block; width: 80%; margin: 15px auto; font-size: 1rem; } .main-navigation { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; position: static; } .main-title { position: static; transform: none; margin-bottom: 20px; order: 1; } .top-link { order: 0; } .left-link { order: 1; } .right-link { order: 2; } .bottom-link { order: 4; } }
+@media (max-width: 768px) { 
+    .main-menu { padding-top: 10vh; } 
+    .top-link, .bottom-link, .left-link, .right-link { position: static; transform: none; display: block; width: 80%; margin: 15px auto; font-size: 1rem; } 
+    .main-navigation { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; position: static; } 
+    .main-title { position: static; transform: none; margin-bottom: 20px; order: 1; } 
+    .top-link { order: 0; } .left-link { order: 1; } 
+    .right-link { order: 2; } 
+    .bottom-link { order: 4; } 
+    
+    /* ОНОВЛЕНО ДЛЯ АДАПТИВНИХ КНОПОК */
+    .open-policy-btn {
+        top: 10px;
+        left: 10px;
+        width: 45px;
+        height: 45px;
+    }
+    .open-settings-btn {
+        top: 10px;
+        right: 10px;
+        width: 45px;
+        height: 45px;
+    }
+}

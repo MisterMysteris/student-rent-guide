@@ -93,7 +93,21 @@ document.addEventListener('DOMContentLoaded', () => {
             tip3Title: "Фотографуйте все",
             tip3Text: "Перед заселенням зробіть детальні фото та відео всіх недоліків квартири: подряпини на меблях, плями на стінах, несправна техніка. Це допоможе уникнути проблем при виселенні.",
             tip4Title: "Акт прийому-передачі",
-            tip4Text: "Разом з договором підпишіть акт прийому-передачі квартири. У ньому опишіть стан житла, перелік меблів та техніки, а також зафіксуйте показники лічильників."
+            tip4Text: "Разом з договором підпишіть акт прийому-передачі квартири. У ньому опишіть стан житла, перелік меблів та техніки, а також зафіксуйте показники лічильників.",
+
+            // --- КЛЮЧІ ДЛЯ НОВОЇ СТОРІНКИ ПОЛІТИКИ ---
+            policyBtnTitle: "Правова політика",
+            policyPageTitle: "Правова політика",
+            policyHeader: "Правові та етичні аспекти",
+            dataHandlingTitle: "Збір та обробка даних",
+            dataHandlingText1: "Цей веб-сайт розроблено з повагою до правової культури та конфіденційності. Ми не збираємо, не зберігаємо та не передаємо жодних персональних даних користувачів (імена, поштові адреси, номери телефонів) на власному сервері, оскільки серверна частина відсутня.",
+            dataHandlingText2: "Єдиний зовнішній інструмент збору даних — це \"Посилання для фідбеку\", яке веде на Google Form. Будь-які дані, надані вами у цій формі, обробляються компанією Google відповідно до її власної політики конфіденційності.",
+            privacyTitle: "Конфіденційність та локальне зберігання",
+            privacyText1: "Для покращення вашого досвіду користування (наприклад, збереження теми, мови та розміру шрифту) цей сайт використовує технологію `localStorage` вашого браузера. Це означає, що ваші налаштування зберігаються виключно на вашому пристрої.",
+            privacyText2: "Ці дані ніколи не передаються на будь-який сервер і доступні лише цьому веб-сайту, коли ви його відвідуєте з того ж браузера. Очищення кешу вашого браузера видалить ці налаштування.",
+            ethicsTitle: "Етичні аспекти та доступність",
+            ethicsText1: "Частиною правової культури є забезпечення рівного доступу до інформації. Цей проєкт намагається дотримуватись етичних норм, надаючи функції доступності, такі як зміна розміру шрифту та режим озвучування тексту (Text-to-Speech).",
+            ethicsText2: "Ці інструменти покликані допомогти користувачам з різними потребами отримати доступ до важливої правової інформації, представленої на сайті."
         },
         'en': {
             pageTitle: "Student Housing Rental Roadmap",
@@ -173,7 +187,21 @@ document.addEventListener('DOMContentLoaded', () => {
             tip3Title: "Photograph Everything",
             tip3Text: "Before moving in, take detailed photos and videos of all apartment defects: scratches on furniture, stains on walls, faulty appliances. This will help avoid problems when you move out.",
             tip4Title: "Acceptance Certificate",
-            tip4Text: "Along with the contract, sign an acceptance certificate for the apartment. In it, describe the condition of the housing, a list of furniture and appliances, and record the meter readings."
+            tip4Text: "Along with the contract, sign an acceptance certificate for the apartment. In it, describe the condition of the housing, a list of furniture and appliances, and record the meter readings.",
+
+            // --- KEYS FOR NEW POLICY PAGE ---
+            policyBtnTitle: "Legal Policy",
+            policyPageTitle: "Legal Policy",
+            policyHeader: "Legal and Ethical Aspects",
+            dataHandlingTitle: "Data Collection and Processing",
+            dataHandlingText1: "This website is designed with respect for legal culture and privacy. We do not collect, store, or transmit any personal user data (names, email addresses, phone numbers) on our own server, as there is no backend.",
+            dataHandlingText2: "The only external data collection tool is the \"Feedback Link,\" which leads to a Google Form. Any data you provide in this form is processed by Google according to its own privacy policy.",
+            privacyTitle: "Privacy and Local Storage",
+            privacyText1: "To improve your user experience (e.g., saving your theme, language, and font size), this site uses your browser's `localStorage` technology. This means your settings are stored exclusively on your device.",
+            privacyText2: "This data is never sent to any server and is only accessible to this website when you visit it from the same browser. Clearing your browser cache will remove these settings.",
+            ethicsTitle: "Ethical Aspects and Accessibility",
+            ethicsText1: "Part of legal culture is ensuring equal access to information. This project attempts to adhere to ethical norms by providing accessibility features, such as font size adjustment and Text-to-Speech mode.",
+            ethicsText2: "These tools are intended to help users with different needs access the important legal information presented on the site."
         }
     };
 
@@ -227,6 +255,13 @@ document.addEventListener('DOMContentLoaded', () => {
         changeFontSize(savedFontSize);
         const speechEnabled = localStorage.getItem('speechEnabled') === 'true';
         speechToggle.checked = speechEnabled;
+        
+        // Застосовуємо клас для показу/ховання кнопок озвучки при завантаженні
+        if (speechEnabled) {
+            document.body.classList.add('speech-mode-active');
+        } else {
+            document.body.classList.remove('speech-mode-active');
+        }
     }
 
     // --- ОБРОБНИКИ ПОДІЙ ---
@@ -261,14 +296,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if(speechToggle){
          speechToggle.addEventListener('change', () => {
             localStorage.setItem('speechEnabled', speechToggle.checked);
-            if (!speechToggle.checked) {
+            
+            // Додаємо/видаляємо клас, щоб CSS міг реагувати
+            if (speechToggle.checked) {
+                document.body.classList.add('speech-mode-active');
+            } else {
+                document.body.classList.remove('speech-mode-active');
                 window.speechSynthesis.cancel();
             }
         });
     }
 
-    document.querySelectorAll('h1, h2, h3, p, a, li, button').forEach(el => {
-        el.addEventListener('mouseenter', () => speakText(el));
+    document.querySelectorAll('h1, h2, h3, p, a, li, button, span, .timeline-title').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            if (speechToggle.checked) {
+                speakText(el);
+            }
+        });
         el.addEventListener('mouseleave', () => {
             clearTimeout(speechTimer);
         });
